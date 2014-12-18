@@ -3,26 +3,75 @@
 
 int main()
 {
+        // reference:
+        // - http://boredzo.org/pointers/
+        // Understanding and Using C Pointers book
+
+        /*
+          types of ambiguity in the C specification:
+          implementation-defined
+          unspecified
+          undefined
+          locale-specific
+         */
+
+
+
+        // * is the dereference operator
+        // & is the address_of operator
+
+
+        // notes on pointer declaration and operator precedence
+        // int* ptr_a, ptr_b;  // ptr_a is int*, but ptr_b is NOT
+        // int *ptr_a, *ptr_b; // this declares 2 variables of type int*
+        // int ptr_b, *ptr_a; // it is less ambiguous to put the non-pointer first
+
+        /*
+          // Whitespace does not matter when declaring a pointer.
+          // the following are all equivalent:
+          int* pi;
+          int * pi;
+          int *pi;
+          int*pi;
+         */
+
+        /*
+        int *a;
+        int *b[9];
+        int (*c)[9];
+        */
+
+
+
+
+
         // how to initialize an array literal as a pointer???
-        int *ages = (int[]){23, 43, 12, 89, 2};
+        // int *ages = (int[]){23, 43, 12, 89, 2};
+
+        // "decaying"... the array “decays” to a pointer
+        // Most usages of array are equivalent to if array had been declared as a pointer ???
+        // Decaying is an implicit &; array == &array == &array[0].
+        // In English, these expressions read “array”, “pointer to array”, and “pointer to the first element of array” (the subscript operator, [], has higher precedence than the address-of operator). But in C, all three expressions mean the same thing.
 
 
-        // In C, arrays have a strong relationship to pointers
-        // The C standard defines that numbers[0] is just syntactic sugar for *(numbers + 0)
-        //    arr[ i ] == * ( arr + i )
+        // The subscript operator (the [] in array[0]) has nothing to do with arrays.
+        // The definition of the subscript operator [] is that E1[E2] is identical to (*((E1)+(E2))).
+        int an_array[] = {45, 67, 89};
+        int *array_ptr = &an_array[1];
+        printf("%i\n", array_ptr[1]);
+
 
         // If arr is a pointer to arr[ 0 ] then arr + i is a pointer to arr[ i ]
-        //   what knows to transform arr + i into arr + i * len(type(arr)) ??? or is that even what happens???
 
-        // are c arrays contiguious in memory????
-
+        // are c arrays guaranteed to be contiguious in memory????
 
         // char *names[] = {"Alan", "Frank", "Mary", "John", "Lisa"};
 
+        /*
         int count = sizeof(*ages) / sizeof(int);
         printf("count = %d\n", count);
 
-        /*
+
         int i = 0;
 
         int *cur_age = ages;
