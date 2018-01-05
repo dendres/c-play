@@ -16,10 +16,10 @@ CFLAGS=-Wall -Werror -Wextra -g
 # maybe checkpatch.pl ???  can it be integrated into the editor???
 
 
-all: ext8
+all: ext16
 
 clean:
-	rm -f ext8
+	rm -f ext16
 
 # https://news.ycombinator.com/item?id=6596855
 # https://www.youtube.com/watch?v=z-RJK-NBKXE
