@@ -1,17 +1,10 @@
 
-# still working on generalizing makefile to build everything in the directory
-# for now:
-#
-# gcc -Wall -Werror -Wextra -g -o hello hello.c
+CC=gcc
+CFLAGS=-Wall -Werror -Wextra -g
+SRCS=$(wildcard *.c)
+NAMES = $(basename $(SRCS))
 
+all: $(NAMES)
 
-
-
-
-# CFLAGS=-Wall -Werror -Wextra -g
-#
-# all: ext16
-#
-# clean:
-# 	rm -f ext16
-
+clean:
+	rm -f $(NAMES)
