@@ -45,3 +45,29 @@ int main(){
 
         return 0;
 }
+
+/*
+compare to other solutions:
+ - could walk backward to set i by puting the conditions in the for loop
+   for (i = len-1; (line[i] == ' ' || line[i] == '\t' || line[i] == '\n'); i--)
+   and then set the new end of line:
+   line[++i] = '\n';
+   line[++i] = '\0';
+
+ - should probably set i = len-2 before loop and avoid checking for \n\0:
+
+   while ((len = getline(line, MAXLINE)) > 0) {
+        i = len - 2;
+        while (i >= 0 && (line[i] == ' ' || line[i] == '\t'))
+            --i;
+        if (i >= 0) {
+            line[i+1] = '\n';
+            line[i+2] = '\0';
+            printf("%s", line);
+        }
+   }
+
+*/
+
+
+
