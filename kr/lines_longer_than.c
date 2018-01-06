@@ -35,3 +35,11 @@ int main(){
 }
 
 
+/* now compare to other solutions:
+
+most solutions continue to impose a MAXLINE
+
+one solution used getline()
+and buffered sections of arbitrarily long lines
+
+*/
