@@ -3,10 +3,11 @@
 /*
 K&R Exercise 1-19
 reverse each line of input
-using a function reverse()
+using a function reverse(s)
 */
 
 #define MAXLINE 1000
+
 
 int get_line(char s[], int lim) {
         int c, i;
@@ -21,56 +22,64 @@ int get_line(char s[], int lim) {
         return i;
 }
 
-void copy(char to[], char from[]){
+
+void strip_newline(char s[]) {
         int i;
         i = 0;
-        while( (to[i] = from[i]) != '\0')
+        while (s[i] != '\0') {
+                if (s[i] == '\n') {
+                        s[i] = '\0';
+                        break;
+                }
                 ++i;
+        }
 }
 
 
-// reverse the character string s in place
 void reverse(char s[]) {
-
-        char temp[MAXLINE];
-        int i, j, slength;
+        int i, j, t;
 
         // find the length
-        slength = 0;
-        while (s[slength] != '\0')
-                ++slength;
+        for (j = 0; s[j] != '\0'; ++j)
+                ;
+        --j;
 
-        // copy into temp backward
-        i = 0;
-        j = slength - 1;
-        while (i <= slength ) {
-                temp[i] = s[j];
-                ++i;
+        // swap characters
+        for (i = 0; i < j; i++) {
+                t = s[i];
+                s[i] = s[j];
+                s[j] = t;
                 --j;
         }
-
-        copy(s, temp);
 }
 
+
 int main(){
-        int i, len;
+        int len;
         char line[MAXLINE];
-        char l2[MAXLINE];
 
         while ((len = get_line(line, MAXLINE)) > 0) {
-
-                // strip the \n before sending to reverse
-                i = 0;
-                while (line[i] != '\n') {
-                        l2[i] = line[i];
-                        ++i;
-                }
-
-                reverse(l2);
-
-                printf("%s\n", l2);
+                strip_newline(line);
+                reverse(line);
+                printf("%s\n", line);
         }
         return 0;
 }
 
 
+/*
+http://clc-wiki.net/wiki/K%26R2_solutions:Chapter_1:Exercise_19
+ - more concise length finding:
+   for (j = 0; s[j] != '\0'; ++j)
+        ;
+   --j;
+
+and no need to have a temp copy of the whole array... just need a temp character
+    for (i = 0; i < j; i++) {
+        temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
+        --j;
+    }
+
+*/
