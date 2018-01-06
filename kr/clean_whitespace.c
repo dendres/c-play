@@ -39,7 +39,8 @@ int main(){
                                 break;
                         }
                 }
-                printf("%s", line);
+                if (i > 0) // don't print blank lines
+                        printf("%s", line);
         }
 
         return 0;
