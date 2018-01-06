@@ -1,4 +1,24 @@
 c-play
 ======
 
-experiments toward a deeper understanding of linux
+Practice toward a deeper understanding of C and Linux
+
+Current
+-------
+
+ - Exercises from K&R
+
+Future
+------
+
+ - http://www.crasseux.com/books/ctutorial/
+ - https://www.kernel.org/doc/Documentation/CodingStyle
+ - other books and tutorials from http://www.iso-9899.info/wiki/Main_Page
+ - Exercises from TAOCP
+ - https://projecteuler.net/archives
+
+Warnings
+--------
+
+ - Without a deep understanding of the language, its history, and its design goals, you are doomed to fail.
+
