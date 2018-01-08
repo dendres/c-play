@@ -7,7 +7,7 @@ Current
 -------
 
  - Exercises from K&R
-
+ -- skipped 1-21 through 1-24 after extensive struggle
 Future
 ------
 

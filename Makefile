@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra -g
+CFLAGS=-m64 -Wall -Wextra -Wpedantic -Wconversion -g
 SRCS=$(wildcard *.c)
 NAMES = $(basename $(SRCS))
 
