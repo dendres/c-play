@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# an attempt to do some automated format cleanup for c files
+# still very much a work in progress
+
+
+# https://gist.github.com/paulfryzel/3947535
+# mostly from http://word.bitly.com/post/31921713978/static-analysis
+
+if [[ $# -eq 0 ]]; then
+    echo "Usage: cfmt <file>"
+else
+    astyle \
+        --style=linux \
+        -s8 \
+        #   --style=1tbs \
+    #   --lineend=linux \
+    #   --convert-tabs \
+    #   --preserve-date \
+    #   --pad-header \
+    #   --indent-switches \
+    #   --align-pointer=name \
+    #   --align-reference=name \
+    #   --pad-oper \
+    #   --suffix=none \
+    $1
+fi
+
