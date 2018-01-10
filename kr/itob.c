@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
+
 void reverse(char s[])
 {
         int i, j;
@@ -26,16 +27,21 @@ void reverse(char s[])
 K&R 3-5
 convert an integer to an arbitrary base
 
-XXX getting closer
-... but it's not clear if this should display the two's complement
-or maintain a "-" sign in front of the converted integer.
-checking how others did it.
+no one seems to be converting negative numbers to 2's complement binary
+... so I won't either.
 
+preserving '-' sign like the previous exercise instead
 */
 void itob(int n, char s[], int b)
 {
         int i, sign;
         char chars[] = "0123456789abcdefghijklmnopqrstuvwxyz";
+
+        if ( b < 2 || b > 36 ) {
+                fprintf(stderr, "itob cannot use base %d\n", b);
+                exit(EXIT_FAILURE);
+        }
+
         i = 0;
         sign = n;
 
@@ -66,3 +72,9 @@ int main()
         }
         return 0;
 }
+
+
+/*
+comparing to others:
+ - error if base is not valid
+*/
