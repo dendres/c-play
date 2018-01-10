@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <limits.h>
+#include <stdbool.h>
 
 
 void reverse(char s[])
@@ -21,27 +22,31 @@ void reverse(char s[])
         }
 }
 
+
 /*
 K&R Exercise 3-4
+make itoa handle INT_MIN on any machine
 
-first showing what the example itoa does not handle
-and that -(2^wordsize-1) == INT_MIN from limits.h
+0 - INT_MIN == INT_MIN == -2147483648
+this causes an overflow because 2147483647 is the largest positive integer
+
+handling the positive and negative cases independently
 
 */
 void itoa(int n, char s[])
 {
-        int i, sign;
+        int i = 0;
 
-        if ((sign = n) < 0)
-                n = 0 - n;
-
-        i = 0;
-        do {
-                s[i++] = (char)(n % 10 + (int)'0');
-        } while ( (n /= 10) > 0);
-
-        if (sign < 0)
+        if (n < 0){
+                do {
+                        s[i++] = (char)( (-(n % 10)) + (int)'0');
+                } while ( (n /= 10) < 0);
                 s[i++] = '-';
+        } else {
+                do {
+                        s[i++] = (char)(n % 10 + (int)'0');
+                } while ( (n /= 10) > 0);
+        }
 
         s[i] = '\0';
         reverse(s);
@@ -54,10 +59,10 @@ int main()
         char s1[100];
         int numbers[] = {0, 1, -1, INT_MAX, INT_MIN};
 
-
         for (i = 0; i < (int)(sizeof(numbers) / sizeof(numbers[0])); i++) {
                 itoa(numbers[i], s1);
                 printf("x = %d, s1 = %s\n", numbers[i], s1);
         }
         return 0;
 }
+
