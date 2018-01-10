@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <limits.h>
-#include <stdbool.h>
-
+#include <stdlib.h>
 
 void reverse(char s[])
 {
@@ -35,18 +34,16 @@ handling the positive and negative cases independently
 */
 void itoa(int n, char s[])
 {
-        int i = 0;
+        int i, sign;
 
-        if (n < 0){
-                do {
-                        s[i++] = (char)( (-(n % 10)) + (int)'0');
-                } while ( (n /= 10) < 0);
+        sign = n;
+        i = 0;
+        do {
+                s[i++] = (char)(abs(n % 10) + (int)'0');
+        } while ( n /= 10 );
+
+        if (sign < 0)
                 s[i++] = '-';
-        } else {
-                do {
-                        s[i++] = (char)(n % 10 + (int)'0');
-                } while ( (n /= 10) > 0);
-        }
 
         s[i] = '\0';
         reverse(s);
@@ -66,3 +63,10 @@ int main()
         return 0;
 }
 
+/*
+compare to others:
+ - didn't need stdbool
+ - use abs function from stdlib
+ - while( (n /= 10) > 0)  is the same as while( n /= 10 ) ?
+
+*/
