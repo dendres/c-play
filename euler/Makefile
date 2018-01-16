@@ -1,8 +1,8 @@
 
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra -g
+CFLAGS=-m64 -Wall -Wextra -Wpedantic -Wconversion -Wdouble-promotion -Wshadow -Wformat=2 -g -l criterion
 SRCS=$(wildcard *.c)
-NAMES = $(basename $(SRCS))
+NAMES=$(basename $(SRCS))
 
 all: $(NAMES)
 
