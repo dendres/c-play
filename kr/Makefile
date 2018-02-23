@@ -35,9 +35,10 @@
 # -Wmissing-prototypes
 # -O2 # there are warnings that are only generated when the code is optimized
 
+# -fsanitize=address   https://github.com/google/sanitizers/wiki/AddressSanitizer
 
 CC=gcc
-CFLAGS=-m64 -Wall -Wextra -Wpedantic -Wconversion -Wdouble-promotion -Wshadow -Wformat=2 -g -l criterion
+CFLAGS=-m64 -Wall -Wextra -Wpedantic -Wconversion -Wdouble-promotion -Wshadow -Wformat=2 -g -fsanitize=address -l criterion -lm
 SRCS=$(wildcard *.c)
 NAMES=$(basename $(SRCS))
 
