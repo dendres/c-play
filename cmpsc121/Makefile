@@ -8,7 +8,7 @@ all: $(NAMES)
 
 .PHONY: check
 check:
-	cppcheck --enable=all $(filter-out $@,$(MAKECMDGOALS)).c
+	cppcheck --enable=all $(filter-out $@,$(MAKECMDGOALS)).cpp
 
 list:
 	echo $(NAMES)

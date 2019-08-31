@@ -13,12 +13,26 @@
 #include <iostream>
 using namespace std;
 
+struct Box
+{
+        int length;
+        int width;
+};
+
+
 
 int main()
 {
 
+        Box b;
+        b.length = 5;
 
+        Box c = {33, 44};
+        
+        cout << "box length = " << b.length << endl;
 
+        cout << "c.length = " << c.length << endl;
+        
         return 0;
 }
 
